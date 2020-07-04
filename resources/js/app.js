@@ -19,7 +19,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('cards_profile', require('./components/CardsProfile.vue').default);
+Vue.component('cards-profile', require('./components/profiles/CardsProfile.vue').default);
+Vue.component('form-poll', require('./components/polls/FormPoll.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

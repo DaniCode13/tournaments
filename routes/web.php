@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +21,7 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{user}', 'ProfilesController@index')->name('profile.show');
 
+//Polls controller
+Route::get('/p/create','PollsController@create');
+Route::post('/p','PollsController@store');
+Route::get('/p/types_polls','PollsController@types_polls');
