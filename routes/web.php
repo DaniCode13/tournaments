@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/{user}', 'ProfilesController@index')->name('profile.show');
 
 //Polls controller
-Route::get('/p/create','PollsController@create');
-Route::post('/p','PollsController@store');
-Route::get('/p/types_polls','PollsController@types_polls');
+Route::get('/p/create', 'PollsController@create');
+Route::post('/p', 'PollsController@store');
+Route::get('/p/types_polls', 'PollsController@types_polls');
+Route::get('/p/{poll}', 'PollsController@show');
+Route::get('/p/get_poll/{id}', 'PollsController@get_poll');

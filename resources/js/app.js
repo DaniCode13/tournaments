@@ -21,6 +21,8 @@ window.Vue = require('vue');
 
 Vue.component('cards-profile', require('./components/profiles/CardsProfile.vue').default);
 Vue.component('form-poll', require('./components/polls/FormPoll.vue').default);
+Vue.component('show-poll', require('./components/polls/ShowPoll.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
