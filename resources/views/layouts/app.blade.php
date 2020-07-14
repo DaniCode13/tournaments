@@ -24,9 +24,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/home') }}">
+                <a class="navbar-brand d-flex" href="{{ auth()->user() ? url('/'.auth()->user()->username .'') : url('/home') }}">
                     <div><img src="/svg/logo.svg" class="pr-3" style="height: 30px; border-right:solid 1px;"></div>
-                    <div class="pl-3">Tournaments</div>
+                    <div class="pl-3">Torneos y Encuestas</div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

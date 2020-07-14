@@ -13,7 +13,7 @@
                     />
                 </div>
                 <div class="card-body">
-                    <div class="input-group mb-2" v-for="(input, index) in inputs" :key="index">
+                    <div class="input-group mb-2" v-for="(input, index) in options" :key="index">
                         <div class="input-group-prepend">
                             <div class="input-group-text">{{ index + 1 }}</div>
                         </div>
@@ -22,13 +22,13 @@
                             class="form-control"
                             placeholder="Escribe una opción"
                             type="text"
-                            v-model="inputs[index].text"
+                            v-model="options[index].option"
                         />
                     </div>
                 </div>
                 <div class="card-body d-flex justify-content-center">
                     <a @click="add_option()" class="btn btn-block btn-light">
-                        <img src="/svg/add.svg" alt />
+                        <img src="/svg/add.svg" alt/>
                     </a>
                 </div>
             </div>
@@ -52,73 +52,69 @@
     </form>
 </template>
 <script>
-export default {
-    mounted: function() {
-        this.get();
-        this.check_min_two;
-    },
-    data() {
-        return {
-            id: null,
-            title: null,
-            inputs: [{ text: "" }, { text: "" }],
-            input: "",
-            types: {},
-            type: "",
-        };
-    },
-    computed: {
-        check_min_two: function() {
-            // retorna los que no estan vacios
-            var filter = this.inputs.filter(function(option) {
-                return option.text != "";
-            });
+    export default {
+        mounted: function () {
+            this.get();
+        },
+        data() {
+            return {
+                id: null,
+                title: null,
+                options: [{id: null, option: ""}, {id: null, option: ""}],
+                option: "",
+                types: {},
+                type: "",
+            };
+        },
+        methods: {
+            check_min_two: function () {
+                // retorna los que no estan vacios
+                var filter = this.options.filter(function (o) {
+                    return o.option != "";
+                });
 
-            //Si hay minimo 2 campos pasara la validacion
-            if (filter.length < 2) {
-                return false;
-            } else {
-                this.inputs = filter;
-                return true;
-            }
-        }
-    },
-    methods: {
-        copy_url: function() {
-            var copyText = document.getElementById("inputUrl");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            alert("Copied the text: " + copyText.value);
-        },
-        add_option: function() {
-            this.inputs.push({ text: "" });
-        },
-        validate: function() {
-            if (this.check_min_two) {
-                var params = {
-                    title: this.title,
-                    options: JSON.stringify(this.inputs),
-                    type_poll_id: this.type
-                };
-                this.post(params);
-            } else {
-                alert("debes ingresar al menos 2 opciones");
-            }
-        },
-        post: function(data) {
-            axios.post("/p", data).then(res => {
-                window.location.href = "/p/" + res.data.id;
-                
-            });
-        },
-        get: function() {
-            axios.get("/p/types_polls").then(res => {
-                if (res.data) {
-                    this.types = res.data;
+                this.set_ids_to_options();
+
+                //Si hay minimo 2 campos pasara la validacion
+                if (filter.length < 2) {
+                    return false;
+                } else {
+                    this.options = filter;
+                    return true;
                 }
-            });
+            },
+            set_ids_to_options: function () {
+                this.options.forEach(function (value, index, array) {
+                    value.id = index + 1;
+                });
+            },
+            add_option: function () {
+                this.options.push({id: this.options.length, option: ""});
+            },
+            validate: function () {
+                if (this.check_min_two()) {
+                    var params = {
+                        title: this.title,
+                        options: JSON.stringify(this.options),
+                        type_poll_id: this.type
+                    };
+                    this.post(params);
+                } else {
+                    alert("debes ingresar al menos 2 opciones");
+                }
+            },
+            post: function (data) {
+                axios.post("/p", data).then(res => {
+                    window.location.href = "/p/" + res.data.id;
+                });
+            },
+            get: function () {
+                axios.get("/p/types_polls").then(res => {
+                    if (res.data) {
+                        this.types = res.data;
+                    }
+                });
+            }
         }
-    }
-};
+    };
 </script>

@@ -20,8 +20,10 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('cards-profile', require('./components/profiles/CardsProfile.vue').default);
+Vue.component('cards-lists', require('./components/lists/CardsLists.vue').default);
 Vue.component('form-poll', require('./components/polls/FormPoll.vue').default);
 Vue.component('show-poll', require('./components/polls/ShowPoll.vue').default);
+Vue.component('chart-results', require('./components/polls/ChartResults.vue').default);
 
 
 /**

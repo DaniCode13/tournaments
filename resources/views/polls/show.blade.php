@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
-    <show-poll :options="'{{$poll->options}}'" :title="'{{$poll->title}}'">
-        </form-poll>
+    <show-poll :data="{{$poll}}" :duplication="{{$duplication}}">
+    </show-poll>
 </div>
 
 @endsection
