@@ -15,11 +15,7 @@ class ImageController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
 
@@ -28,27 +24,16 @@ class ImageController extends Controller
         return response()->json($images, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
-        // $data = $request->validate([
-        //     'image' => 'required'
-        // ]);
+    
         $this->user = auth()->user()->id;
         $image = $request->image;
         $this->check_directory_exists();
@@ -57,23 +42,13 @@ class ImageController extends Controller
         return response()->json($image, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show(Image $image)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit(Image $image)
     {
         //
