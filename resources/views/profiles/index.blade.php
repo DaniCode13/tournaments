@@ -5,13 +5,13 @@
     <div class="row">
         <cards-profile :image="'/images/torneos.png'"
                        :title="'Crear Torneo'"
-                       :description="'En este apartado puedes crear un torneo y personalizarlo. '"
+                       :description="''"
                        :url="'/t/create'">
         </cards-profile>
 
         <cards-profile :image="'/images/votaciones.png'"
                        :title="'Realizar Encuesta'"
-                       :description="'En este apartado podras crear una encuesta de la forma mas facil y sencillas. '"
+                       :description="''"
                         :url="'/p/create'">
 
         </cards-profile>

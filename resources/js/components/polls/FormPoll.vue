@@ -28,7 +28,7 @@
                 </div>
                 <div class="card-body d-flex justify-content-center">
                     <a @click="add_option()" class="btn btn-block btn-light">
-                        <img src="/svg/add.svg" alt/>
+                        <i class="fas fa-plus"></i>
                     </a>
                 </div>
             </div>

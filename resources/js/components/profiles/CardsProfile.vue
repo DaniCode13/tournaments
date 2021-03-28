@@ -10,7 +10,7 @@
             <div class="card-body">
                 <h5 class="card-title"></h5>
                 <p class="card-text">{{description}}</p>
-                <a :href="url" class="btn btn-primary">Crear</a>
+                <a :href="url" class="btn btn-outline-primary btn-block ">Crear</a>
             </div>
         </div>
     </div>
