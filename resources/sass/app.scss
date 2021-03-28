@@ -5,6 +5,25 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+@import '../../public/libraries/bootstrap/bootstrap.min.css';
+// $global-primary-background: #491165;
+
+
+//Jquery-bracket
+//@import '~jquery-bracket/dist/jquery.bracket.min.css';
+@import '../../public/libraries/jquery-bracket/dist/jquery.bracket.min.css';
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+//SweetAlert2
+@import '~sweetalert2/dist/sweetalert2.min.css';
+
+//dropzone
+@import '../../public/libraries/dropzone/dist/dropzone.css'
+
 
 // @import '~chart.js/dist/Chart'

@@ -15,9 +15,10 @@ class CreateTournamentsTable extends Migration
     {
         Schema::create('tournaments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->string('title');
+            $table->longText('participants');
             $table->timestamps();
-
             $table->index('user_id');
         });
     }

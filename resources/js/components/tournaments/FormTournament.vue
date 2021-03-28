@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="validate()">
+    <div>
         <div id="section-fixed-button" class="fixed-bottom p-4">
             <button id="btn-save-tournament" type="submit" class="btn btn-primary btn-lg">
                 <i class="fas fa-save"></i>
@@ -7,12 +7,7 @@
         </div>
 
         <div class="">
-            <input required
-                   id="title-tournament"
-                   v-model="title_tournament"
-                   type="text"
-                   class="mx-auto form-control w-50 "
-                   placeholder="Nombre del Torneo">
+            <h3>{{tournament.title}}</h3>
         </div>
         <div id="tournament-container">
             <div id="tournament"></div>
@@ -22,53 +17,8 @@
             class="modal fade"
             tabindex="-1"
         >
-
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Imagen del Participante</h5>
-                    </div>
-
-                    <div class="modal-body text-center">
-                        <div class="">
-                            <button @click="select_file()" class="btn btn-light">
-                                <i class="fas fa-paperclip pr-2"></i>Subir Imagen
-                            </button>
-                            <input
-                                @change="render_file_selected($event.target)"
-                                hidden
-                                accept=".png, .jpg, .jpeg"
-                                type="file"
-                                id="input-upload-image"
-                            />
-                        </div>
-
-                        <div id="previsualization-container" class="d-none justify-content-center pt-3">
-                            <div id="previsualization-image">
-                                <div id="previsualization-header" class="d-flex">
-                                    <div id="previsualization-title" class="p-2 flex-grow-1"></div>
-                                    <div id="previsualization-close" class="p-2">
-                                        <button
-                                            @click="close_previsualization()"
-                                            type="button"
-                                            class="close"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                            Cancelar
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
-    </form>
+    </div>
 </template>
 
 <script>
@@ -248,7 +198,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div.jQBracket .team {
     position: relative;
     z-index: 1;

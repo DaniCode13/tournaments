@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function tournaments(){
         return $this->hasMany(Tournament::class);
     }
+
+    public function images(){
+        return $this->hasMany(Image::class);
+    }
 }

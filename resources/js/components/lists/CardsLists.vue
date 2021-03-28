@@ -7,49 +7,55 @@
             <div v-if="!list" class="alert alert-primary" role="alert">
                 Sin resultados
             </div>
-            <a v-else v-for="(l,index) in list" :href="get_url(l.id)"
-               class="list-group-item list-group-item-action">
+            <a v-else v-for="(l,index) in list" :key="l.id" :href="get_url(l.id)" class="list-group-item list-group-item-action">
                 <b>{{index+1}}.- </b>
-                {{l.title}}
+                {{get_attribute(l)}}
             </a>
 
         </div>
     </div>
 </template>
 <script>
-    export default {
-        props: ['title', 'type'],
-        mounted: function () {
-            this.get_list()
+export default {
+    props: ["title", "type"],
+    mounted: function () {
+        this.get_list();
+    },
+    computed: {
+        get_type: function () {
+            let name = "";
+            if (this.type == "polls") {
+                name = "encuestas";
+            } else {
+                name = "torneos";
+            }
+            return name;
         },
-        computed: {
-            get_type: function () {
-                let name = ""
-                if (this.type == "polls") {
-                    name = "encuestas"
-                } else {
-                    name = "torneos"
+    },
+    data() {
+        return {
+            list: null,
+        };
+    },
+    methods: {
+        get_attribute: function (l) {
+            if (l.hasOwnProperty("title")) {
+                return l.title;
+            } else if (l.hasOwnProperty("name")) {
+                return l.name;
+            }
+        },
+        get_url: function (id) {
+            return this.type == "polls" ? "/p/" + id : "/t/" + id;
+        },
+        get_list: function () {
+            var url = this.type == "polls" ? "/p/" : "/t/";
+            axios.get(url + this.type).then((res) => {
+                if (res.data.length > 0) {
+                    this.list = res.data;
                 }
-                return name;
-            }
+            });
         },
-        data() {
-            return {
-                list: null
-            }
-        },
-        methods: {
-            get_url: function (id) {
-                return (this.type == 'polls') ? ('/p/' + id) : ('/t//' + id);
-            },
-            get_list: function () {
-                var url = (this.type == 'polls') ? '/p/' : '/t/';
-                axios.get(url + this.type).then(res => {
-                    if (res.data.length>0) {
-                        this.list = res.data
-                    }
-                });
-            }
-        }
-    }
+    },
+};
 </script>

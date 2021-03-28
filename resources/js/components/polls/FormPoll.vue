@@ -37,7 +37,7 @@
                     <div v-if="types.length>0" class="form-group">
                         <label for="type_poll">Revisión de Duplicación de votos</label>
                         <select required v-model="type" class="form-control" id="type_poll">
-                            <option value selected disabled hidden>Elije una opcion</option>
+                            <option value selected disabled hidden>Elige una opción</option>
                             <option :value="types[0].id">Duplicación de Ip</option>
                             <option :value="types[1].id">Duplicación por Cookie</option>
                             <option :value="types[2].id">No revisar duplicación de votos</option>
